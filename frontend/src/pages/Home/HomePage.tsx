@@ -1,69 +1,43 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import Logo from '../../components/Brand/Logo'
 import ContactForm from '../../components/ContactForm/ContactForm'
 import NetworkBackground from '../../components/NetworkBackground/NetworkBackground'
-import { PARTNERS } from '../../data/partners'
+import { API_BASE, type Partner, type PortfolioItem, type Service, type SiteSettings } from '../../lib/api'
 import '../../App.css'
-
-const SERVICES = [
-  {
-    icon: '⚙️',
-    title: 'Desarrollo de software a medida',
-    description:
-      'Sistemas web y plataformas propias diseñadas alrededor de los procesos reales de cada organización.',
-  },
-  {
-    icon: '🧭',
-    title: 'Consultoría tecnológica',
-    description:
-      'Diagnóstico y acompañamiento para elegir la arquitectura, herramientas y proveedores correctos antes de construir.',
-  },
-  {
-    icon: '📋',
-    title: 'Gestión de proyectos digitales',
-    description:
-      'Coordinación end-to-end de proyectos de software: planeación, seguimiento y entrega, sin sorpresas.',
-  },
-  {
-    icon: '🛠️',
-    title: 'Soporte técnico continuo',
-    description:
-      'Mantenimiento, monitoreo y resolución de incidencias una vez que el sistema ya está en producción.',
-  },
-]
-
-const PORTFOLIO = [
-  {
-    category: 'Gestión municipal',
-    title: 'Plataformas de administración pública',
-    description: 'Sistemas para digitalizar trámites y procesos internos de gobiernos locales.',
-  },
-  {
-    category: 'Consultoría',
-    title: 'Portales de servicios profesionales',
-    description: 'Plataformas de gestión para despachos y firmas de consultoría.',
-  },
-  {
-    category: 'Gestión de proyectos',
-    title: 'Herramientas de seguimiento y control',
-    description: 'Sistemas internos para planear, dar seguimiento y reportar avance de proyectos.',
-  },
-  {
-    category: 'Bibliotecas',
-    title: 'Sistemas de gestión bibliotecaria',
-    description: 'Catalogación, préstamos y consulta de acervos para instituciones educativas.',
-  },
-]
 
 export default function HomePage() {
   const location = useLocation()
+
+  const [services, setServices] = useState<Service[]>([])
+  const [portfolio, setPortfolio] = useState<PortfolioItem[]>([])
+  const [partners, setPartners] = useState<Partner[]>([])
+  const [settings, setSettings] = useState<SiteSettings>({})
+
+  useEffect(() => {
+    Promise.all([
+      fetch(`${API_BASE}/services`).then((r) => r.json()),
+      fetch(`${API_BASE}/portfolio`).then((r) => r.json()),
+      fetch(`${API_BASE}/partners`).then((r) => r.json()),
+      fetch(`${API_BASE}/settings`).then((r) => r.json()),
+    ])
+      .then(([servicesData, portfolioData, partnersData, settingsData]) => {
+        setServices(servicesData)
+        setPortfolio(portfolioData)
+        setPartners(partnersData)
+        setSettings(settingsData)
+      })
+      .catch(() => {
+        // Content will simply stay empty if the API is unreachable; the
+        // page shell (hero copy, forms, chat) still renders normally.
+      })
+  }, [])
 
   useEffect(() => {
     if (!location.hash) return
     const el = document.querySelector(location.hash)
     el?.scrollIntoView({ behavior: 'smooth' })
-  }, [location.hash])
+  }, [location.hash, services, portfolio, partners])
 
   return (
     <>
@@ -71,11 +45,11 @@ export default function HomePage() {
         <NetworkBackground />
         <div className="mwc-container mwc-hero-inner">
           <div>
-            <span className="mwc-hero-eyebrow">MAEWALLISCORP</span>
-            <h1>Avanzamos en todas direcciones.</h1>
+            <span className="mwc-hero-eyebrow">{settings.hero_eyebrow ?? 'MAEWALLISCORP'}</span>
+            <h1>{settings.hero_title ?? 'Avanzamos en todas direcciones.'}</h1>
             <p>
-              Diseñamos, desarrollamos y damos soporte a plataformas de software para
-              organizaciones que necesitan resolver procesos reales, no solo tener una app más.
+              {settings.hero_description ??
+                'Diseñamos, desarrollamos y damos soporte a plataformas de software para organizaciones que necesitan resolver procesos reales, no solo tener una app más.'}
             </p>
             <div className="mwc-hero-actions">
               <a href="#contacto" className="mwc-btn mwc-btn--primary">Hablemos de tu proyecto</a>
@@ -99,8 +73,8 @@ export default function HomePage() {
             </p>
           </div>
           <div className="mwc-grid">
-            {SERVICES.map((service) => (
-              <article className="mwc-card" key={service.title}>
+            {services.map((service) => (
+              <article className="mwc-card" key={service.id}>
                 <div className="mwc-card-icon">{service.icon}</div>
                 <h3>{service.title}</h3>
                 <p>{service.description}</p>
@@ -118,8 +92,8 @@ export default function HomePage() {
             <p>Algunas de las áreas donde hemos construido soluciones a medida.</p>
           </div>
           <div className="mwc-grid">
-            {PORTFOLIO.map((project) => (
-              <article className="mwc-portfolio-card" key={project.title}>
+            {portfolio.map((project) => (
+              <article className="mwc-portfolio-card" key={project.id}>
                 <div className="mwc-portfolio-tag">
                   <span>{project.category}</span>
                 </div>
@@ -140,10 +114,8 @@ export default function HomePage() {
               <span className="mwc-section-eyebrow">Quiénes somos</span>
               <h2>Sobre nosotros</h2>
               <p style={{ marginTop: 12, color: 'var(--mwc-ink-muted)', fontSize: 16 }}>
-                MAEWALLISCORP es un grupo de desarrollo y consultoría tecnológica. Construimos
-                software propio y trabajamos junto a otras organizaciones para digitalizar sus
-                procesos, combinando desarrollo a medida con acompañamiento estratégico en cada
-                etapa del proyecto.
+                {settings.about_text ??
+                  'MAEWALLISCORP es un grupo de desarrollo y consultoría tecnológica. Construimos software propio y trabajamos junto a otras organizaciones para digitalizar sus procesos, combinando desarrollo a medida con acompañamiento estratégico en cada etapa del proyecto.'}
               </p>
             </div>
             <div className="mwc-about-panel">
@@ -157,7 +129,7 @@ export default function HomePage() {
             <p>Conoce a las personas detrás de MAEWALLISCORP.</p>
           </div>
           <div className="mwc-grid">
-            {PARTNERS.map((partner) => (
+            {partners.map((partner) => (
               <Link to={`/nosotros/${partner.slug}`} className="mwc-partner-card" key={partner.slug}>
                 <div className="mwc-partner-avatar">
                   {partner.name
@@ -187,11 +159,11 @@ export default function HomePage() {
             <div className="mwc-contact-info">
               <div className="mwc-contact-info-item">
                 <strong>Tiempo de respuesta</strong>
-                <span>Normalmente respondemos en 24–48 horas hábiles.</span>
+                <span>{settings.contact_response_time ?? 'Normalmente respondemos en 24–48 horas hábiles.'}</span>
               </div>
               <div className="mwc-contact-info-item">
                 <strong>Soporte</strong>
-                <span>Clientes activos pueden usar el chat para abrir tickets de soporte.</span>
+                <span>{settings.contact_support_note ?? 'Clientes activos pueden usar el chat para abrir tickets de soporte.'}</span>
               </div>
             </div>
           </div>

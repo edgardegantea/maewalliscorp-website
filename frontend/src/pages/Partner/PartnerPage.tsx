@@ -1,12 +1,43 @@
+import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { PARTNERS } from '../../data/partners'
+import { API_BASE, type Partner as PartnerData } from '../../lib/api'
 import './PartnerPage.css'
+
+type LoadState = 'loading' | 'ready' | 'not-found'
 
 export default function PartnerPage() {
   const { slug } = useParams<{ slug: string }>()
-  const partner = PARTNERS.find((p) => p.slug === slug)
+  const [partner, setPartner] = useState<PartnerData | null>(null)
+  const [state, setState] = useState<LoadState>('loading')
 
-  if (!partner) {
+  useEffect(() => {
+    setState('loading')
+    setPartner(null)
+
+    fetch(`${API_BASE}/partners/${slug}`)
+      .then(async (res) => {
+        if (!res.ok) {
+          setState('not-found')
+          return
+        }
+        const data = await res.json()
+        setPartner(data)
+        setState('ready')
+      })
+      .catch(() => setState('not-found'))
+  }, [slug])
+
+  if (state === 'loading') {
+    return (
+      <section className="mwc-section">
+        <div className="mwc-container">
+          <p style={{ color: 'var(--mwc-ink-muted)' }}>Cargando…</p>
+        </div>
+      </section>
+    )
+  }
+
+  if (state === 'not-found' || !partner) {
     return (
       <section className="mwc-section">
         <div className="mwc-container">
