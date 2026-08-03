@@ -73,6 +73,17 @@ export default function PartnerPage() {
             </div>
           )}
 
+          {partner.publicaciones && partner.publicaciones.length > 0 && (
+            <div className="mwc-partner-block">
+              <h2>Publicaciones y proyectos</h2>
+              <ul>
+                {partner.publicaciones.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
           {partner.pendingReview && (partner.academico.length > 0 || partner.profesional.length > 0) && (
             <p className="mwc-partner-pending">
               Esta información se obtuvo de fuentes públicas y está pendiente de confirmación

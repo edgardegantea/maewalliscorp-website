@@ -5,6 +5,7 @@ export type Partner = {
   semblanza: string
   academico: string[]
   profesional: string[]
+  publicaciones?: string[]
   links?: { label: string; url: string }[]
   /** true when the bio is based on limited or unverified public sources and should be reviewed/completed by the partner. */
   pendingReview: boolean
@@ -23,14 +24,23 @@ export const PARTNERS: Partner[] = [
       'Ingeniería en Informática, especialidad en Sistemas de Información (2015).',
     ],
     profesional: [
-      'Investigación en la intersección de inteligencia artificial, educación y salud mental: sistemas tutores inteligentes y modelos computacionales multimodales, con publicaciones indexadas en JCR sobre el uso de LLMs para automatización de tareas y planeación instruccional (Frontiers in Education, 2026) y técnicas de IA para reconocimiento de trastornos de ansiedad (Frontiers in Digital Health, 2025).',
-      'Estudios empíricos sobre percepción de estudiantes y docentes ante explicaciones de conceptos generadas por inteligencia artificial, y desarrollo de corpus de datos para reconocimiento de emociones en contextos educativos multilingües.',
       'Director de Innovación Tecnológica del H. Ayuntamiento de Tlatlauquitepec, Puebla, para la administración 2024–2027 (nombramiento del 18 de octubre de 2024).',
       'Arquitecto del sistema de gestión escolar del Instituto Tecnológico Superior de Martínez de la Torre.',
       'Principal estratega tecnológico de MAEWALLISCORP: diseño y desarrollo de las plataformas Scriptoria, SciCita, SUMA y El Jale, con metodología Scrum y stack basado en Laravel, React, Tailwind CSS, Python y PostgreSQL.',
       'Desarrollador FullStack e IoT: propiedad industrial e intelectual registrada en México, incluyendo un dispositivo inteligente medidor de consumo de agua, plataformas de intercambio cultural para el fortalecimiento de lenguas indígenas y sistemas de monitoreo climatológico agrícola con Machine Learning.',
       'Stack técnico: desarrollo web con PHP, JavaScript y Python; desarrollo móvil con Kotlin y Dart, además de Laravel, React, Tailwind CSS y PostgreSQL.',
       'Instructor certificado: cursos de programación y desarrollo (incluida certificación de Red Hat Academy).',
+      'Investigador en la intersección de inteligencia artificial, educación y salud mental, con línea de trabajo en sistemas tutores inteligentes y modelos computacionales multimodales.',
+    ],
+    publicaciones: [
+      '"Task automation and instructional planning support with large language models: a systematic review" — Frontiers in Education, 2026.',
+      '"Un corpus de oraciones para el análisis de emociones en estudiantes de inglés mediante algoritmos de inteligencia artificial" — Decires, UNAM, 2026.',
+      '"Artificial intelligence techniques applied to anxiety disorders recognition: a systematic review" — Frontiers in Digital Health, 2025.',
+      '"Identificación de estados emocionales en estudiantes de nivel básico mediante una agrupación de robots sociales sincronizados" — proyecto de servicio social, 2024.',
+      '"El mejor escenario como apoyo al modelo híbrido con el entorno Microsoft Teams" — Revista Electrónica ANFEI Digital, 2023.',
+      '"Importancia y diseño de un plan estratégico en la promoción de las carreras de Ingeniería" — Journal CIM, 2023.',
+      '"Desarrollo de competencias profesionales mediante el programa de dualidad y residencias en vinculación con empresas" — Journal CIM, 2023.',
+      '"Sistema tutor inteligente para reducir el índice de reprobación en estudiantes de ingeniería informática" — ICyTA: Ingeniería, Ciencia y Tecnología Aplicada, 2020.',
     ],
     links: [
       { label: 'Google Scholar', url: 'https://scholar.google.com/citations?user=xbRk8vQAAAAJ&hl=es' },

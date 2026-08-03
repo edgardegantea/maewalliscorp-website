@@ -62,12 +62,16 @@
 /* Hero */
 
 .mwc-hero {
+  position: relative;
+  overflow: hidden;
   background: linear-gradient(160deg, var(--mwc-blue-darker) 0%, var(--mwc-blue) 100%);
   color: var(--mwc-white);
   padding-block: 88px 96px;
 }
 
 .mwc-hero-inner {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   align-items: center;

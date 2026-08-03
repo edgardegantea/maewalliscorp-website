@@ -3,7 +3,7 @@ import './ContactForm.css'
 
 type Status = 'idle' | 'sending' | 'success' | 'error'
 
-type FieldErrors = Record<string, string[]>
+type FieldErrors = Record<string, string>
 
 const API_URL = `${import.meta.env.VITE_API_URL ?? '/api'}/contact`
 
@@ -62,7 +62,7 @@ export default function ContactForm() {
           onChange={(e) => setName(e.target.value)}
           required
         />
-        {errors.name && <span className="mwc-field-error">{errors.name[0]}</span>}
+        {errors.name && <span className="mwc-field-error">{errors.name}</span>}
       </div>
 
       <div className="mwc-field">
@@ -74,7 +74,7 @@ export default function ContactForm() {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        {errors.email && <span className="mwc-field-error">{errors.email[0]}</span>}
+        {errors.email && <span className="mwc-field-error">{errors.email}</span>}
       </div>
 
       <div className="mwc-field">
@@ -86,7 +86,7 @@ export default function ContactForm() {
           onChange={(e) => setMessage(e.target.value)}
           required
         />
-        {errors.message && <span className="mwc-field-error">{errors.message[0]}</span>}
+        {errors.message && <span className="mwc-field-error">{errors.message}</span>}
       </div>
 
       <button type="submit" className="mwc-btn mwc-btn--primary" disabled={status === 'sending'}>

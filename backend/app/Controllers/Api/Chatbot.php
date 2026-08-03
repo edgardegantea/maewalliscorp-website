@@ -11,8 +11,8 @@ class Chatbot extends BaseController
     public function message(): ResponseInterface
     {
         $rules = [
-            'message'    => 'required|string|min_length[1]|max_length[1000]',
-            'session_id' => 'permit_empty|string|max_length[64]',
+            'message'    => ['label' => 'Mensaje', 'rules' => 'required|string|min_length[1]|max_length[1000]'],
+            'session_id' => ['label' => 'Sesión', 'rules' => 'permit_empty|string|max_length[64]'],
         ];
 
         if (! $this->validate($rules)) {

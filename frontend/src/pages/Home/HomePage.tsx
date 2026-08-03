@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import Logo from '../../components/Brand/Logo'
 import ContactForm from '../../components/ContactForm/ContactForm'
+import NetworkBackground from '../../components/NetworkBackground/NetworkBackground'
 import { PARTNERS } from '../../data/partners'
 import '../../App.css'
 
@@ -67,6 +68,7 @@ export default function HomePage() {
   return (
     <>
       <section className="mwc-hero">
+        <NetworkBackground />
         <div className="mwc-container mwc-hero-inner">
           <div>
             <span className="mwc-hero-eyebrow">MAEWALLISCORP</span>
