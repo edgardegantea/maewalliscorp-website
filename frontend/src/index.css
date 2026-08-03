@@ -1,0 +1,59 @@
+:root {
+  --mwc-blue: #4a5f83;
+  --mwc-blue-dark: #333f56;
+  --mwc-blue-darker: #232b3b;
+  --mwc-blue-light: #7c8db3;
+  --mwc-blue-pale: #eef1f6;
+  --mwc-white: #ffffff;
+  --mwc-ink: #1c2230;
+  --mwc-ink-muted: #5a6376;
+  --mwc-border: #dde2ec;
+
+  --mwc-font: system-ui, 'Segoe UI', Roboto, sans-serif;
+
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--mwc-font);
+  color: var(--mwc-ink);
+  background: var(--mwc-white);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100svh;
+}
+
+a {
+  color: inherit;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}

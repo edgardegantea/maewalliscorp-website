@@ -1,0 +1,13 @@
+{
+  "name": "maewalliscorp-website",
+  "private": true,
+  "workspaces": [
+    "frontend"
+  ],
+  "scripts": {
+    "dev:frontend": "npm run dev --workspace frontend",
+    "build:frontend": "npm run build --workspace frontend",
+    "dev:backend": "php backend/spark serve",
+    "postinstall": "echo 'Run: composer install --working-dir=backend'"
+  }
+}

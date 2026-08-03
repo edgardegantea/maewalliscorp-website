@@ -1,0 +1,56 @@
+.mwc-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+  max-width: 480px;
+}
+
+.mwc-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
+
+.mwc-field label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--mwc-ink);
+}
+
+.mwc-field input,
+.mwc-field textarea {
+  border: 1px solid var(--mwc-border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 15px;
+  font-family: inherit;
+  color: var(--mwc-ink);
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.mwc-field input:focus,
+.mwc-field textarea:focus {
+  border-color: var(--mwc-blue);
+}
+
+.mwc-field-error {
+  color: #c0392b;
+  font-size: 13px;
+}
+
+.mwc-form-feedback {
+  font-size: 14px;
+  margin: 0;
+}
+
+.mwc-form-feedback--success {
+  color: #1e7e34;
+}
+
+.mwc-form-feedback--error {
+  color: #c0392b;
+}

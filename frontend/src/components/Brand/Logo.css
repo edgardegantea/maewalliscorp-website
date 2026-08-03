@@ -1,0 +1,35 @@
+.mwc-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mwc-logo-icon {
+  display: block;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.mwc-logo-full {
+  display: block;
+}
+
+.mwc-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.mwc-logo-wordmark {
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  font-size: calc(var(--mwc-logo-size) * 0.34);
+  color: inherit;
+  white-space: nowrap;
+}
+
+.mwc-logo-tagline {
+  font-size: calc(var(--mwc-logo-size) * 0.19);
+  opacity: 0.85;
+  font-style: italic;
+}
