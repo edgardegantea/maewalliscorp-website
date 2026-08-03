@@ -1,7 +1,7 @@
 .mwc-partner-hero {
-  background: linear-gradient(160deg, var(--mwc-blue-darker) 0%, var(--mwc-blue) 100%);
+  background: radial-gradient(120% 160% at 15% 0%, #2a3350 0%, var(--mwc-blue-darker) 55%, #0f1219 100%);
   color: var(--mwc-white);
-  padding-block: 56px;
+  padding-block: 64px;
 }
 
 .mwc-partner-hero-inner {
@@ -11,39 +11,41 @@
 }
 
 .mwc-partner-hero-avatar {
-  width: 84px;
-  height: 84px;
+  width: 82px;
+  height: 82px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 26px;
-  font-weight: 700;
+  font-size: 24px;
+  font-weight: 650;
   flex-shrink: 0;
 }
 
 .mwc-partner-back {
   display: inline-block;
   font-size: 13px;
-  opacity: 0.8;
+  color: rgba(255, 255, 255, 0.55);
   text-decoration: none;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  transition: color 0.15s ease;
 }
 
 .mwc-partner-back:hover {
-  opacity: 1;
+  color: var(--mwc-white);
 }
 
 .mwc-partner-hero h1 {
   font-size: 30px;
-  font-weight: 700;
+  font-weight: 650;
+  letter-spacing: -0.02em;
 }
 
 .mwc-partner-role {
   margin-top: 6px;
-  color: #d7ddea;
+  color: rgba(255, 255, 255, 0.62);
   font-size: 15px;
 }
 
@@ -51,20 +53,21 @@
   max-width: 720px;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 36px;
 }
 
 .mwc-partner-block h2 {
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 19px;
+  font-weight: 650;
   color: var(--mwc-ink);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+  letter-spacing: -0.01em;
 }
 
 .mwc-partner-block p {
   color: var(--mwc-ink-muted);
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 .mwc-partner-block ul {
@@ -72,7 +75,11 @@
   padding-left: 20px;
   color: var(--mwc-ink-muted);
   font-size: 15px;
-  line-height: 1.7;
+  line-height: 1.75;
+}
+
+.mwc-partner-block ul li + li {
+  margin-top: 10px;
 }
 
 .mwc-partner-links {
@@ -88,22 +95,23 @@
   font-size: 14px;
   font-weight: 600;
   color: var(--mwc-blue);
-  background: var(--mwc-blue-pale);
-  padding: 8px 14px;
-  border-radius: 8px;
+  background: var(--mwc-tint);
+  padding: 9px 16px;
+  border-radius: 999px;
   text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
 .mwc-partner-links a:hover {
-  background: var(--mwc-blue-light);
+  background: var(--mwc-blue);
   color: var(--mwc-white);
 }
 
 .mwc-partner-pending {
-  margin-top: 12px;
+  margin-top: 14px;
   font-size: 13.5px;
   color: var(--mwc-blue);
-  background: var(--mwc-blue-pale);
-  border-radius: 8px;
-  padding: 10px 14px;
+  background: var(--mwc-tint);
+  border-radius: var(--mwc-radius-sm);
+  padding: 12px 16px;
 }

@@ -3,6 +3,8 @@ import { Link, useLocation } from 'react-router-dom'
 import Logo from '../../components/Brand/Logo'
 import ContactForm from '../../components/ContactForm/ContactForm'
 import NetworkBackground from '../../components/NetworkBackground/NetworkBackground'
+import ProcessSection from '../../components/Process/ProcessSection'
+import FaqSection from '../../components/Faq/FaqSection'
 import { API_BASE, type Partner, type PortfolioItem, type Service, type SiteSettings } from '../../lib/api'
 import '../../App.css'
 
@@ -57,7 +59,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="mwc-hero-visual">
-            <Logo variant="full" size={360} />
+            <Logo variant="full" size={360} priority />
           </div>
         </div>
       </section>
@@ -83,6 +85,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <ProcessSection />
 
       <section id="proyectos" className="mwc-section mwc-section--muted">
         <div className="mwc-container">
@@ -146,6 +150,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <FaqSection />
 
       <section id="contacto" className="mwc-section mwc-section--muted">
         <div className="mwc-container mwc-contact">

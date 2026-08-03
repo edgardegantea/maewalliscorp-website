@@ -4,6 +4,10 @@
   gap: 18px;
   width: 100%;
   max-width: 480px;
+  background: var(--mwc-surface);
+  border: 1px solid var(--mwc-border);
+  border-radius: var(--mwc-radius);
+  padding: 32px;
 }
 
 .mwc-field {
@@ -22,14 +26,20 @@
 .mwc-field input,
 .mwc-field textarea {
   border: 1px solid var(--mwc-border);
-  border-radius: 8px;
-  padding: 10px 12px;
+  border-radius: var(--mwc-radius-sm);
+  padding: 11px 14px;
   font-size: 15px;
   font-family: inherit;
   color: var(--mwc-ink);
+  background: var(--mwc-tint);
   resize: vertical;
   outline: none;
-  transition: border-color 0.15s ease;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.mwc-field input:focus,
+.mwc-field textarea:focus {
+  background: var(--mwc-surface);
 }
 
 .mwc-field input:focus,
@@ -53,4 +63,15 @@
 
 .mwc-form-feedback--error {
   color: #c0392b;
+}
+
+.mwc-contact-form .mwc-btn--primary {
+  background: var(--mwc-blue-darker);
+  color: var(--mwc-white);
+  box-shadow: none;
+  align-self: flex-start;
+}
+
+.mwc-contact-form .mwc-btn--primary:hover {
+  background: var(--mwc-blue-dark);
 }

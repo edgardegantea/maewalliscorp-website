@@ -11,6 +11,8 @@ type LogoProps = {
   withWordmark?: boolean
   withTagline?: boolean
   size?: number
+  /** Set true for above-the-fold placements (e.g. the Hero) so the image loads eagerly instead of lazily. */
+  priority?: boolean
 }
 
 export default function Logo({
@@ -18,6 +20,7 @@ export default function Logo({
   withWordmark = true,
   withTagline = false,
   size = 48,
+  priority = false,
 }: LogoProps) {
   if (variant === 'full') {
     return (
@@ -28,7 +31,8 @@ export default function Logo({
           alt="MAEWALLISCORP — Avanzamos en todas direcciones"
           className="mwc-logo-full"
           style={{ width: size, height: 'auto' }}
-          loading="lazy"
+          loading={priority ? 'eager' : 'lazy'}
+          fetchPriority={priority ? 'high' : 'auto'}
         />
       </picture>
     )

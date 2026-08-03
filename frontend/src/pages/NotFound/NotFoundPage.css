@@ -1,0 +1,36 @@
+.mwc-notfound {
+  min-height: calc(100svh - 260px);
+  display: flex;
+  align-items: center;
+  padding-block: 80px;
+}
+
+.mwc-notfound-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 480px;
+}
+
+.mwc-notfound-code {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--mwc-blue);
+  margin-bottom: 10px;
+}
+
+.mwc-notfound-inner h1 {
+  font-size: 30px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: var(--mwc-ink);
+}
+
+.mwc-notfound-inner p {
+  margin-top: 14px;
+  margin-bottom: 28px;
+  color: var(--mwc-ink-muted);
+  font-size: 16px;
+  line-height: 1.6;
+}

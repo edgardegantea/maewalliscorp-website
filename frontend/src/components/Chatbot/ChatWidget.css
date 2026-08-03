@@ -15,7 +15,7 @@
   height: 56px;
   border-radius: 50%;
   border: none;
-  background: #1d4ed8;
+  background: var(--mwc-blue);
   color: #fff;
   font-size: 24px;
   cursor: pointer;
@@ -33,17 +33,17 @@
 .mwc-chat-panel {
   width: min(340px, calc(100vw - 40px));
   height: min(460px, calc(100vh - 120px));
-  background: #fff;
-  border-radius: 14px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+  background: var(--mwc-surface);
+  border-radius: var(--mwc-radius);
+  box-shadow: var(--mwc-shadow-lg);
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  color: #1a1a1a;
+  color: var(--mwc-ink);
 }
 
 .mwc-chat-header {
-  background: #1d4ed8;
+  background: var(--mwc-blue);
   color: #fff;
   padding: 12px 16px;
   font-weight: 600;
@@ -69,7 +69,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  background: #f5f6fa;
+  background: var(--mwc-tint);
 }
 
 .mwc-chat-bubble {
@@ -83,15 +83,16 @@
 
 .mwc-chat-bubble--user {
   align-self: flex-end;
-  background: #1d4ed8;
+  background: var(--mwc-blue);
   color: #fff;
   border-bottom-right-radius: 2px;
 }
 
 .mwc-chat-bubble--bot {
   align-self: flex-start;
-  background: #fff;
-  border: 1px solid #e3e5ea;
+  background: var(--mwc-surface);
+  border: 1px solid var(--mwc-border);
+  color: var(--mwc-ink);
   border-bottom-left-radius: 2px;
 }
 
@@ -126,26 +127,28 @@
   display: flex;
   gap: 8px;
   padding: 10px;
-  border-top: 1px solid #e3e5ea;
-  background: #fff;
+  border-top: 1px solid var(--mwc-border);
+  background: var(--mwc-surface);
 }
 
 .mwc-chat-form input {
   flex: 1;
-  border: 1px solid #d7dae0;
+  border: 1px solid var(--mwc-border);
   border-radius: 8px;
   padding: 8px 10px;
   font-size: 14px;
+  color: var(--mwc-ink);
+  background: var(--mwc-surface);
   outline: none;
 }
 
 .mwc-chat-form input:focus {
-  border-color: #1d4ed8;
+  border-color: var(--mwc-blue);
 }
 
 .mwc-chat-form button {
   border: none;
-  background: #1d4ed8;
+  background: var(--mwc-blue);
   color: #fff;
   border-radius: 8px;
   padding: 8px 14px;

@@ -4,6 +4,7 @@ use CodeIgniter\Router\RouteCollection;
 
 /** @var RouteCollection $routes */
 $routes->get('/', 'Home::index');
+$routes->get('sitemap.xml', 'Sitemap::index');
 
 $routes->group('api', static function (RouteCollection $routes) {
     $routes->post('contact', 'Api\Contact::store');

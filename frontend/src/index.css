@@ -1,17 +1,45 @@
 :root {
   --mwc-blue: #4a5f83;
   --mwc-blue-dark: #333f56;
-  --mwc-blue-darker: #232b3b;
-  --mwc-blue-light: #7c8db3;
-  --mwc-blue-pale: #eef1f6;
+  --mwc-blue-darker: #1b2130;
+  --mwc-blue-light: #8a9bc0;
+  /* Decorative pale tint used only against the permanently-dark header/hero
+     (nav pill hover, hero button hover) — intentionally NOT theme-dependent. */
+  --mwc-blue-pale: #f3f5f9;
+  /* Literal white — for text/icons that sit on the always-dark header, hero
+     and footer. Not a page-surface color, so it does not flip with theme. */
   --mwc-white: #ffffff;
-  --mwc-ink: #1c2230;
-  --mwc-ink-muted: #5a6376;
-  --mwc-border: #dde2ec;
 
-  --mwc-font: system-ui, 'Segoe UI', Roboto, sans-serif;
+  /* Theme-dependent tokens: these flip between light/dark mode. */
+  --mwc-page-bg: #ffffff;
+  --mwc-surface: #ffffff;
+  --mwc-tint: #f3f5f9;
+  --mwc-ink: #14171f;
+  --mwc-ink-muted: #666f80;
+  --mwc-ink-soft: #8890a0;
+  --mwc-border: #e6e9ef;
+
+  --mwc-font: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  --mwc-shadow-sm: 0 1px 2px rgba(20, 23, 31, 0.05);
+  --mwc-shadow-md: 0 8px 24px rgba(20, 23, 31, 0.07);
+  --mwc-shadow-lg: 0 24px 64px rgba(20, 23, 31, 0.16);
+  --mwc-radius: 18px;
+  --mwc-radius-sm: 10px;
 
   color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --mwc-page-bg: #12151c;
+  --mwc-surface: #1a1e28;
+  --mwc-tint: #232936;
+  --mwc-ink: #e8eaf0;
+  --mwc-ink-muted: #9aa2b3;
+  --mwc-ink-soft: #7d8494;
+  --mwc-border: #2a3040;
+
+  color-scheme: dark;
 }
 
 * {
@@ -27,10 +55,12 @@ body {
 body {
   font-family: var(--mwc-font);
   color: var(--mwc-ink);
-  background: var(--mwc-white);
-  line-height: 1.5;
+  background: var(--mwc-page-bg);
+  line-height: 1.55;
+  letter-spacing: -0.011em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 #root {
@@ -56,4 +86,8 @@ h2,
 h3,
 p {
   margin: 0;
+}
+
+h1, h2, h3 {
+  letter-spacing: -0.02em;
 }
