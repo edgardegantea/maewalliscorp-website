@@ -160,3 +160,54 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+.mwc-chat-ticket-cta {
+  align-self: flex-start;
+  border: 1px dashed var(--mwc-blue);
+  background: var(--mwc-surface);
+  color: var(--mwc-blue);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.mwc-chat-ticket-cta:hover {
+  background: var(--mwc-tint);
+}
+
+.mwc-chat-ticket-form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--mwc-surface);
+  border: 1px solid var(--mwc-border);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.mwc-chat-ticket-form input {
+  border: 1px solid var(--mwc-border);
+  border-radius: 6px;
+  padding: 7px 9px;
+  font-size: 13px;
+  color: var(--mwc-ink);
+  background: var(--mwc-tint);
+  outline: none;
+}
+
+.mwc-chat-ticket-form button {
+  border: none;
+  background: var(--mwc-blue);
+  color: #fff;
+  border-radius: 6px;
+  padding: 7px 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.mwc-chat-ticket-error {
+  color: #c0392b;
+  font-size: 12px;
+}

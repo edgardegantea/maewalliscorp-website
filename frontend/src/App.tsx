@@ -4,6 +4,7 @@ import HomePage from './pages/Home/HomePage'
 import PartnerPage from './pages/Partner/PartnerPage'
 import PrivacyPage from './pages/Legal/PrivacyPage'
 import TermsPage from './pages/Legal/TermsPage'
+import SupportPage from './pages/Support/SupportPage'
 import NotFoundPage from './pages/NotFound/NotFoundPage'
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route path="nosotros/:slug" element={<PartnerPage />} />
           <Route path="aviso-de-privacidad" element={<PrivacyPage />} />
           <Route path="terminos-y-condiciones" element={<TermsPage />} />
+          <Route path="soporte" element={<SupportPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

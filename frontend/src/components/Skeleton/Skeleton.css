@@ -1,0 +1,32 @@
+.mwc-skeleton-card {
+  background: var(--mwc-surface);
+  border: 1px solid var(--mwc-border);
+  border-radius: var(--mwc-radius);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mwc-skeleton {
+  background: linear-gradient(90deg, var(--mwc-tint) 25%, var(--mwc-border) 50%, var(--mwc-tint) 75%);
+  background-size: 200% 100%;
+  animation: mwc-skeleton-shimmer 1.4s ease-in-out infinite;
+  border-radius: 6px;
+}
+
+.mwc-skeleton-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--mwc-radius-sm);
+  margin-bottom: 8px;
+}
+
+.mwc-skeleton-line {
+  height: 12px;
+}
+
+@keyframes mwc-skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

@@ -106,10 +106,15 @@
         <ul class="admin-nav">
             <li><a href="/admin">Dashboard</a></li>
             <li><a href="/admin/messages">Mensajes de contacto</a></li>
+            <li><a href="/admin/tickets">Tickets de soporte</a></li>
             <li><a href="/admin/services">Servicios</a></li>
             <li><a href="/admin/portfolio">Portafolio</a></li>
             <li><a href="/admin/partners">Socios</a></li>
+            <li><a href="/admin/process">Cómo trabajamos</a></li>
+            <li><a href="/admin/faqs">Preguntas frecuentes</a></li>
             <li><a href="/admin/settings">Textos del sitio</a></li>
+            <li><a href="/admin/legal/privacy">Aviso de privacidad</a></li>
+            <li><a href="/admin/legal/terms">Términos y condiciones</a></li>
             <li><a href="/admin/account">Mi cuenta</a></li>
         </ul>
     </aside>

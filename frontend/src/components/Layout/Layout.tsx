@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 import Logo from '../Brand/Logo'
 import ChatWidget from '../Chatbot/ChatWidget'
+import WhatsAppButton from '../WhatsAppButton/WhatsAppButton'
+import BackToTop from '../BackToTop/BackToTop'
 import { useTheme } from '../../hooks/useTheme'
 import '../../App.css'
 import './Layout.css'
@@ -78,6 +80,7 @@ export default function Layout() {
                 <li><Link to="/#nosotros">Nosotros</Link></li>
                 <li><Link to="/#faq">Preguntas frecuentes</Link></li>
                 <li><Link to="/#contacto">Contacto</Link></li>
+                <li><Link to="/soporte">Consultar ticket</Link></li>
               </ul>
             </div>
 
@@ -88,6 +91,15 @@ export default function Layout() {
                 <li><Link to="/terminos-y-condiciones">Términos y condiciones</Link></li>
               </ul>
             </div>
+
+            <div className="mwc-footer-col">
+              <h4>Contacto</h4>
+              <ul>
+                <li>Calle 5 de febrero de #3, Col. Centro, Chignautla, Puebla<br />C.P.: 73950</li>
+                <li><a href="tel:+522313137646">231 313 7646</a></li>
+                <li><a href="mailto:maewalliscorp@gmail.com">maewalliscorp@gmail.com</a></li>
+              </ul>
+            </div>
           </div>
 
           <div className="mwc-footer-bottom">
@@ -96,6 +108,8 @@ export default function Layout() {
         </div>
       </footer>
 
+      <BackToTop />
+      <WhatsAppButton />
       <ChatWidget />
     </div>
   )

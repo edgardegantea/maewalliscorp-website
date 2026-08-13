@@ -5,6 +5,7 @@ import ContactForm from '../../components/ContactForm/ContactForm'
 import NetworkBackground from '../../components/NetworkBackground/NetworkBackground'
 import ProcessSection from '../../components/Process/ProcessSection'
 import FaqSection from '../../components/Faq/FaqSection'
+import SkeletonCard from '../../components/Skeleton/SkeletonCard'
 import { API_BASE, type Partner, type PortfolioItem, type Service, type SiteSettings } from '../../lib/api'
 import '../../App.css'
 
@@ -15,6 +16,7 @@ export default function HomePage() {
   const [portfolio, setPortfolio] = useState<PortfolioItem[]>([])
   const [partners, setPartners] = useState<Partner[]>([])
   const [settings, setSettings] = useState<SiteSettings>({})
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     Promise.all([
@@ -33,6 +35,7 @@ export default function HomePage() {
         // Content will simply stay empty if the API is unreachable; the
         // page shell (hero copy, forms, chat) still renders normally.
       })
+      .finally(() => setIsLoading(false))
   }, [])
 
   useEffect(() => {
@@ -75,13 +78,15 @@ export default function HomePage() {
             </p>
           </div>
           <div className="mwc-grid">
-            {services.map((service) => (
-              <article className="mwc-card" key={service.id}>
-                <div className="mwc-card-icon">{service.icon}</div>
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
-              </article>
-            ))}
+            {isLoading
+              ? Array.from({ length: 4 }).map((_, i) => <SkeletonCard key={i} />)
+              : services.map((service) => (
+                  <article className="mwc-card" key={service.id}>
+                    <div className="mwc-card-icon">{service.icon}</div>
+                    <h3>{service.title}</h3>
+                    <p>{service.description}</p>
+                  </article>
+                ))}
           </div>
         </div>
       </section>
@@ -96,17 +101,19 @@ export default function HomePage() {
             <p>Algunas de las áreas donde hemos construido soluciones a medida.</p>
           </div>
           <div className="mwc-grid">
-            {portfolio.map((project) => (
-              <article className="mwc-portfolio-card" key={project.id}>
-                <div className="mwc-portfolio-tag">
-                  <span>{project.category}</span>
-                </div>
-                <div className="mwc-portfolio-body">
-                  <h3>{project.title}</h3>
-                  <p>{project.description}</p>
-                </div>
-              </article>
-            ))}
+            {isLoading
+              ? Array.from({ length: 4 }).map((_, i) => <SkeletonCard key={i} />)
+              : portfolio.map((project) => (
+                  <article className="mwc-portfolio-card" key={project.id}>
+                    <div className="mwc-portfolio-tag">
+                      <span>{project.category}</span>
+                    </div>
+                    <div className="mwc-portfolio-body">
+                      <h3>{project.title}</h3>
+                      <p>{project.description}</p>
+                    </div>
+                  </article>
+                ))}
           </div>
         </div>
       </section>
@@ -133,20 +140,22 @@ export default function HomePage() {
             <p>Conoce a las personas detrás de MAEWALLISCORP.</p>
           </div>
           <div className="mwc-grid">
-            {partners.map((partner) => (
-              <Link to={`/nosotros/${partner.slug}`} className="mwc-partner-card" key={partner.slug}>
-                <div className="mwc-partner-avatar">
-                  {partner.name
-                    .split(' ')
-                    .slice(0, 2)
-                    .map((w) => w[0])
-                    .join('')}
-                </div>
-                <h3>{partner.name}</h3>
-                <p>{partner.role}</p>
-                <span className="mwc-partner-link">Ver semblanza →</span>
-              </Link>
-            ))}
+            {isLoading
+              ? Array.from({ length: 3 }).map((_, i) => <SkeletonCard key={i} />)
+              : partners.map((partner) => (
+                  <Link to={`/nosotros/${partner.slug}`} className="mwc-partner-card" key={partner.slug}>
+                    <div className="mwc-partner-avatar">
+                      {partner.name
+                        .split(' ')
+                        .slice(0, 2)
+                        .map((w) => w[0])
+                        .join('')}
+                    </div>
+                    <h3>{partner.name}</h3>
+                    <p>{partner.role}</p>
+                    <span className="mwc-partner-link">Ver semblanza →</span>
+                  </Link>
+                ))}
           </div>
         </div>
       </section>

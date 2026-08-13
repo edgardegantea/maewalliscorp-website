@@ -17,6 +17,7 @@ class Sitemap extends BaseController
             ['loc' => base_url('/#contacto'), 'priority' => '0.6'],
             ['loc' => base_url('/aviso-de-privacidad'), 'priority' => '0.3'],
             ['loc' => base_url('/terminos-y-condiciones'), 'priority' => '0.3'],
+            ['loc' => base_url('/soporte'), 'priority' => '0.3'],
         ];
 
         foreach ((new PartnerModel())->getOrdered() as $partner) {

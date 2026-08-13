@@ -15,6 +15,7 @@ class SiteSettingsSeeder extends Seeder
             'about_text'       => 'MAEWALLISCORP es un grupo de desarrollo y consultoría tecnológica. Construimos software propio y trabajamos junto a otras organizaciones para digitalizar sus procesos, combinando desarrollo a medida con acompañamiento estratégico en cada etapa del proyecto.',
             'contact_response_time' => 'Normalmente respondemos en 24–48 horas hábiles.',
             'contact_support_note'  => 'Clientes activos pueden usar el chat para abrir tickets de soporte.',
+            'whatsapp_number'       => '522312051120',
         ];
 
         foreach ($rows as $key => $value) {

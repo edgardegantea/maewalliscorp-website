@@ -1,0 +1,23 @@
+.mwc-back-to-top {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 998;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--mwc-border);
+  background: var(--mwc-surface);
+  color: var(--mwc-ink);
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--mwc-shadow-md);
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.mwc-back-to-top:hover {
+  transform: translateY(-3px);
+}

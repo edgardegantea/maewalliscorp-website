@@ -3,8 +3,11 @@
 namespace App\Controllers\Api;
 
 use App\Controllers\BaseController;
+use App\Models\FaqModel;
+use App\Models\LegalPageModel;
 use App\Models\PartnerModel;
 use App\Models\PortfolioItemModel;
+use App\Models\ProcessStepModel;
 use App\Models\ServiceModel;
 use App\Models\SiteSettingModel;
 use CodeIgniter\HTTP\ResponseInterface;
@@ -49,6 +52,27 @@ class Content extends BaseController
     public function settings(): ResponseInterface
     {
         return $this->response->setJSON((new SiteSettingModel())->getAllAsMap());
+    }
+
+    public function process(): ResponseInterface
+    {
+        return $this->response->setJSON((new ProcessStepModel())->getOrdered());
+    }
+
+    public function faqs(): ResponseInterface
+    {
+        return $this->response->setJSON((new FaqModel())->getOrdered());
+    }
+
+    public function legalPage(string $key): ResponseInterface
+    {
+        $page = (new LegalPageModel())->findByKey($key);
+
+        if (! $page) {
+            return $this->response->setStatusCode(404)->setJSON(['message' => 'Página no encontrada.']);
+        }
+
+        return $this->response->setJSON($page);
     }
 
     private function presentPartner(array $partner): array

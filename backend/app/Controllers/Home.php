@@ -17,6 +17,10 @@ class Home extends BaseController
             'title'       => 'Términos y Condiciones | MAEWALLISCORP',
             'description' => 'Términos de uso de este sitio y de nuestros formularios de contacto.',
         ],
+        'soporte' => [
+            'title'       => 'Consulta tu ticket de soporte | MAEWALLISCORP',
+            'description' => 'Consulta el estado de tu ticket de soporte con tu folio y correo.',
+        ],
     ];
 
     public function index(): string|ResponseInterface

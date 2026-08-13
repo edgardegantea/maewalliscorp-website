@@ -16,6 +16,7 @@ class SettingsController extends BaseController
         'about_text'            => 'Sobre nosotros — párrafo',
         'contact_response_time' => 'Contacto — tiempo de respuesta',
         'contact_support_note'  => 'Contacto — nota de soporte',
+        'whatsapp_number'       => 'WhatsApp — número (con código de país, sin espacios ni signos, ej. 522312051120)',
     ];
 
     public function index(): string

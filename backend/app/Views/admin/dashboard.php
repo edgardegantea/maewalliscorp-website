@@ -21,4 +21,9 @@
         <h3 style="margin:10px 0 0;font-size:28px;"><?= (int) $partnersCount ?></h3>
         <p style="color:#5a6376;font-size:13.5px;margin:4px 0 0;">Socios</p>
     </div>
+    <div class="card">
+        <span class="pill">Soporte</span>
+        <h3 style="margin:10px 0 0;font-size:28px;"><?= (int) $openTicketsCount ?></h3>
+        <p style="color:#5a6376;font-size:13.5px;margin:4px 0 0;">Tickets abiertos</p>
+    </div>
 </div>

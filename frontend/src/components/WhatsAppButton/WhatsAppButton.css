@@ -1,0 +1,20 @@
+.mwc-whatsapp-btn {
+  position: fixed;
+  right: 90px;
+  bottom: 20px;
+  z-index: 999;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition: transform 0.15s ease;
+}
+
+.mwc-whatsapp-btn:hover {
+  transform: scale(1.05);
+}

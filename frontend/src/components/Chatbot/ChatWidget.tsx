@@ -5,6 +5,7 @@ type ChatMessage = {
   id: string
   role: 'user' | 'bot'
   text: string
+  escalate?: boolean
 }
 
 type ChatbotApiResponse = {
@@ -14,7 +15,9 @@ type ChatbotApiResponse = {
   escalate: boolean
 }
 
-const API_URL = `${import.meta.env.VITE_API_URL ?? '/api'}/chatbot/message`
+const API_BASE = import.meta.env.VITE_API_URL ?? '/api'
+const CHAT_API_URL = `${API_BASE}/chatbot/message`
+const TICKETS_API_URL = `${API_BASE}/tickets`
 const SESSION_STORAGE_KEY = 'mwc_chat_session_id'
 
 function getStoredSessionId(): string | null {
@@ -47,9 +50,14 @@ export default function ChatWidget() {
   const sessionIdRef = useRef<string | null>(getStoredSessionId())
   const scrollRef = useRef<HTMLDivElement>(null)
 
+  const [showTicketForm, setShowTicketForm] = useState(false)
+  const [ticketName, setTicketName] = useState('')
+  const [ticketEmail, setTicketEmail] = useState('')
+  const [ticketStatus, setTicketStatus] = useState<'idle' | 'sending' | 'error'>('idle')
+
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' })
-  }, [messages, isOpen])
+  }, [messages, isOpen, showTicketForm])
 
   async function sendMessage(event: FormEvent) {
     event.preventDefault()
@@ -63,7 +71,7 @@ export default function ChatWidget() {
     setIsSending(true)
 
     try {
-      const response = await fetch(API_URL, {
+      const response = await fetch(CHAT_API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -82,7 +90,7 @@ export default function ChatWidget() {
 
       setMessages((prev) => [
         ...prev,
-        { id: crypto.randomUUID(), role: 'bot', text: data.reply },
+        { id: crypto.randomUUID(), role: 'bot', text: data.reply, escalate: data.escalate },
       ])
     } catch {
       setMessages((prev) => [
@@ -97,6 +105,53 @@ export default function ChatWidget() {
       setIsSending(false)
     }
   }
+
+  async function submitTicket(event: FormEvent) {
+    event.preventDefault()
+    if (!ticketName.trim() || !ticketEmail.trim()) return
+
+    setTicketStatus('sending')
+
+    const transcript = messages.map((m) => `${m.role === 'user' ? 'Cliente' : 'Asistente'}: ${m.text}`).join('\n')
+    const lastUserMessage = [...messages].reverse().find((m) => m.role === 'user')?.text ?? 'Consulta desde el chat'
+
+    try {
+      const response = await fetch(TICKETS_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: ticketName.trim(),
+          email: ticketEmail.trim(),
+          subject: lastUserMessage.slice(0, 150),
+          description: transcript,
+          source: 'chatbot',
+        }),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error('request failed')
+      }
+
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: crypto.randomUUID(),
+          role: 'bot',
+          text: `Listo, abrí el ticket ${data.folio}. Te contactaremos a ${ticketEmail}. Puedes consultar el estado en /soporte con este folio.`,
+        },
+      ])
+      setShowTicketForm(false)
+      setTicketName('')
+      setTicketEmail('')
+      setTicketStatus('idle')
+    } catch {
+      setTicketStatus('error')
+    }
+  }
+
+  const lastEscalate = [...messages].reverse().find((m) => m.role === 'bot')?.escalate
 
   return (
     <div className="mwc-chat">
@@ -126,6 +181,37 @@ export default function ChatWidget() {
                 <span />
                 <span />
               </div>
+            )}
+
+            {lastEscalate && !showTicketForm && (
+              <button type="button" className="mwc-chat-ticket-cta" onClick={() => setShowTicketForm(true)}>
+                🎫 Abrir ticket de soporte
+              </button>
+            )}
+
+            {showTicketForm && (
+              <form className="mwc-chat-ticket-form" onSubmit={submitTicket}>
+                <input
+                  type="text"
+                  placeholder="Tu nombre"
+                  value={ticketName}
+                  onChange={(e) => setTicketName(e.target.value)}
+                  required
+                />
+                <input
+                  type="email"
+                  placeholder="Tu correo"
+                  value={ticketEmail}
+                  onChange={(e) => setTicketEmail(e.target.value)}
+                  required
+                />
+                <button type="submit" disabled={ticketStatus === 'sending'}>
+                  {ticketStatus === 'sending' ? 'Creando ticket...' : 'Crear ticket'}
+                </button>
+                {ticketStatus === 'error' && (
+                  <span className="mwc-chat-ticket-error">No se pudo crear el ticket. Intenta de nuevo.</span>
+                )}
+              </form>
             )}
           </div>
 
