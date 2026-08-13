@@ -1,0 +1,33 @@
+{
+  "src/assets/brand/logo-full.png": {
+    "file": "assets/logo-full-Cg9SJLgA.png",
+    "src": "src/assets/brand/logo-full.png"
+  },
+  "src/assets/brand/logo-full.webp": {
+    "file": "assets/logo-full-DCk0mUT1.webp",
+    "src": "src/assets/brand/logo-full.webp"
+  },
+  "src/assets/brand/logo-icon.png": {
+    "file": "assets/logo-icon-OZJ-W_Iv.png",
+    "src": "src/assets/brand/logo-icon.png"
+  },
+  "src/assets/brand/logo-icon.webp": {
+    "file": "assets/logo-icon-CjYRyZE7.webp",
+    "src": "src/assets/brand/logo-icon.webp"
+  },
+  "src/main.tsx": {
+    "file": "assets/main-D77YpplR.js",
+    "name": "main",
+    "src": "src/main.tsx",
+    "isEntry": true,
+    "css": [
+      "assets/main-B5NCkE2u.css"
+    ],
+    "assets": [
+      "assets/logo-icon-OZJ-W_Iv.png",
+      "assets/logo-icon-CjYRyZE7.webp",
+      "assets/logo-full-Cg9SJLgA.png",
+      "assets/logo-full-DCk0mUT1.webp"
+    ]
+  }
+}
