@@ -27,6 +27,11 @@ $routes->group('admin', static function (RouteCollection $routes) {
     $routes->post('login', 'Admin\AuthController::attempt');
     $routes->post('logout', 'Admin\AuthController::logout');
 
+    $routes->get('password/forgot', 'Admin\PasswordResetController::forgot');
+    $routes->post('password/send-code', 'Admin\PasswordResetController::sendCode');
+    $routes->get('password/verify', 'Admin\PasswordResetController::verify');
+    $routes->post('password/reset', 'Admin\PasswordResetController::reset');
+
     $routes->get('/', 'Admin\DashboardController::index');
 
     $routes->get('messages', 'Admin\MessagesController::index');

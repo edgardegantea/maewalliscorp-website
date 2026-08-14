@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar sesión — MAEWALLISCORP Admin</title>
+    <title>Verificar código — MAEWALLISCORP Admin</title>
     <style>
         body {
             margin: 0;
@@ -46,31 +46,40 @@
             cursor: pointer;
         }
         .alert-error { background: #fdecea; color: #c0392b; padding: 10px 14px; border-radius: 8px; font-size: 13.5px; margin-bottom: 16px; }
+        .alert-success { background: #e9f7ef; color: #1e7e46; padding: 10px 14px; border-radius: 8px; font-size: 13.5px; margin-bottom: 16px; }
+        .back-link { display: block; text-align: center; margin-top: 18px; font-size: 13.5px; color: #4a5f83; text-decoration: none; }
     </style>
 </head>
 <body>
     <div class="login-card">
         <h1>MAEWALLISCORP</h1>
-        <p>Panel de administración</p>
+        <p>Escribe el código de 6 dígitos que enviamos a tu correo y tu nueva contraseña.</p>
 
         <?php if (! empty($error)): ?>
             <div class="alert-error"><?= esc($error) ?></div>
         <?php endif; ?>
+        <?php if (! empty($success)): ?>
+            <div class="alert-success"><?= esc($success) ?></div>
+        <?php endif; ?>
 
-        <form method="post" action="/admin/login">
+        <form method="post" action="/admin/password/reset">
             <?= csrf_field() ?>
             <div class="field">
-                <label for="email">Correo</label>
-                <input type="email" id="email" name="email" required autofocus>
+                <label for="code">Código</label>
+                <input type="text" id="code" name="code" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" required autofocus>
             </div>
             <div class="field">
-                <label for="password">Contraseña</label>
-                <input type="password" id="password" name="password" required>
+                <label for="password">Nueva contraseña</label>
+                <input type="password" id="password" name="password" minlength="8" required>
             </div>
-            <button type="submit">Entrar</button>
+            <div class="field">
+                <label for="password_confirm">Confirmar contraseña</label>
+                <input type="password" id="password_confirm" name="password_confirm" minlength="8" required>
+            </div>
+            <button type="submit">Restablecer contraseña</button>
         </form>
 
-        <a href="/admin/password/forgot" style="display:block;text-align:center;margin-top:18px;font-size:13.5px;color:#4a5f83;text-decoration:none;">¿Olvidaste tu contraseña?</a>
+        <a class="back-link" href="/admin/password/forgot">Solicitar otro código</a>
     </div>
 </body>
 </html>

@@ -12,7 +12,9 @@ class AdminAuth implements FilterInterface
     {
         $path = trim((string) $request->getUri()->getPath(), '/');
 
-        if ($path === 'admin/login') {
+        $publicPaths = ['admin/login', 'admin/password/forgot', 'admin/password/send-code', 'admin/password/verify', 'admin/password/reset'];
+
+        if (in_array($path, $publicPaths, true)) {
             return;
         }
 
