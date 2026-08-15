@@ -126,11 +126,35 @@ export default function HomePage() {
               <h2>Sobre nosotros</h2>
               <p style={{ marginTop: 12, color: 'var(--mwc-ink-muted)', fontSize: 16 }}>
                 {settings.about_text ??
-                  'MAEWALLISCORP es un grupo de desarrollo y consultoría tecnológica. Construimos software propio y trabajamos junto a otras organizaciones para digitalizar sus procesos, combinando desarrollo a medida con acompañamiento estratégico en cada etapa del proyecto.'}
+                  'Somos una empresa innovadora que se dedica al desarrollo de software y aplicaciones tecnológicas digitales para diversos tipos de procesos organizacionales e industriales, así como las ventas empresariales y diseño de tarjetas de presentación digital personalizadas.'}
               </p>
             </div>
             <div className="mwc-about-panel">
               <Logo variant="full" size={220} />
+            </div>
+          </div>
+
+          <div className="mwc-grid" style={{ marginTop: 40 }}>
+            <div className="mwc-card">
+              <h3>Misión</h3>
+              <p>
+                Brindar a cada uno de nuestros clientes, empresas privadas y organizaciones
+                públicas las herramientas tecnológicas necesarias las cuales les ayude a tener
+                una mejor forma organizativa para la gestión de sus tiempos.
+              </p>
+            </div>
+            <div className="mwc-card">
+              <h3>Visión</h3>
+              <p>
+                Ser una empresa reconocida internacionalmente por apoyar a otras compañías,
+                organizaciones públicas, micro-negocios y personas físicas en general a crear
+                una interacción con la tecnología la cual les permita el desarrollo de sus
+                fuerzas productivas para llegar a otros niveles de eficiencia y organización.
+              </p>
+            </div>
+            <div className="mwc-card">
+              <h3>Valores</h3>
+              <p>Honestidad · Responsabilidad · Lealtad · Competitividad · Excelencia</p>
             </div>
           </div>
 
